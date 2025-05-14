@@ -40,6 +40,7 @@ function SponsorForm() {
     } catch (err) {
       console.error(err);
     }
+    navigate("/thank-you");
   };
 
   return (

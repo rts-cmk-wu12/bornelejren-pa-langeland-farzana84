@@ -1,9 +1,9 @@
 // server/index.js
-
+import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-const express = require('express');
+
 dotenv.config();
 const app = express();
 app.use(cors());
