@@ -1,12 +1,21 @@
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function About() {
   const [members, setMembers] = useState([]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const saved = localStorage.getItem("datamembers");
     setMembers(saved ? JSON.parse(saved) : []);
+  }, []);*/
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/members")
+      .then((res) => setMembers(res.data))
+      .catch(console.error);
   }, []);
+  // Fetch members from the server
 
   return (
     <section className="min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-white to-gray-100 py-12">

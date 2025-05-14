@@ -1,3 +1,6 @@
+// src/components/SponsorForm.jsx (submit sponsor)
+
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +22,7 @@ function SponsorForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  /*const handleSubmit = (e) => {
     e.preventDefault();
     // Save to localStorage
     const saved = localStorage.getItem("datamembers");
@@ -27,6 +30,16 @@ function SponsorForm() {
     members.push(formData);
     localStorage.setItem("datamembers", JSON.stringify(members));
     navigate("/thank-you");
+  };*/
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:4000/api/members", formData);
+      navigate("/thank-you");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
